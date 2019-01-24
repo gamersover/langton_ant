@@ -7,7 +7,7 @@ class Config:
     FPS = 10    # FPS
     ANT_INIT_POS = (5, 5)  # 蚂蚁起始位置
     ANT_INIT_DIRECTION = 0
-    INIT_TILES = 'random' # 初始网格布置
+    INIT_TILES = None # 初始网格布置
     SHOW_GRID = True # 是否显示网格线
 
     # do not recommend edit this params
