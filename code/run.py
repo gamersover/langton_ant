@@ -31,6 +31,9 @@ def run(tile):
             tile.step()
         pygame.display.update()
 
+        if tile.total_step % 100 == 0:
+            print("total steps:", tile.total_step)
+
 
 if __name__ == "__main__":
     t = Tile(screen, cfg.ANT_START_POS, init_tiles=cfg.INIT_TILES, show_grid=cfg.SHOW_GRID)

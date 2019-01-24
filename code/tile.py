@@ -29,6 +29,7 @@ class Tile:
             self.tiles = np.zeros((cfg.N_TILES, cfg.N_TILES))
 
         self.ant = Ant(self.ant_init_pos, self.ant_init_direction)
+        self.total_step = 0
 
     def draw_tiles(self):
         self.screen.fill(cfg.WHITE)
@@ -57,8 +58,10 @@ class Tile:
             self.tiles[self.ant.x][self.ant.y] = 1 - m
             self.ant.change_direction(m)
             self.ant.step()
+            self.total_step += 1
 
         except IndexError as e:
+            print("final steps:", self.total_step)
             print("WARNING: Ant position is out of boundary, progrome will shut down in five seconds!")
             print("Or you can push q/esc button to quit!")
             time.sleep(5)
