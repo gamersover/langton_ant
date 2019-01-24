@@ -23,7 +23,9 @@ class Tile:
     def init_tiles_ants(self):
         self.screen_size = self.screen.get_size()[0]
         self.tile_size = self.screen_size // cfg.N_TILES
-        if self.init_tiles is not None:
+        if isinstance(self.init_tiles, str) and self.init_tiles == 'random':
+            self.tiles = np.random.randint(0, 2, (cfg.N_TILES, cfg.N_TILES))
+        elif self.init_tiles is not None:
             self.tiles = self.init_tiles
         else:
             self.tiles = np.zeros((cfg.N_TILES, cfg.N_TILES))
@@ -53,17 +55,15 @@ class Tile:
         return x, y
 
     def step(self):
-        try:
+        if 0 <= self.ant.x < cfg.N_TILES and 0 <= self.ant.y < cfg.N_TILES:
             m = self.tiles[self.ant.x][self.ant.y]
             self.tiles[self.ant.x][self.ant.y] = 1 - m
             self.ant.change_direction(m)
             self.ant.step()
             self.total_step += 1
-
-        except IndexError as e:
+        else:
             print("final steps:", self.total_step)
             print("WARNING: Ant position is out of boundary, progrome will shut down in five seconds!")
-            print("Or you can push q/esc button to quit!")
             time.sleep(5)
             sys.exit(0)
 

@@ -1,9 +1,13 @@
+import numpy as np
+
+
 class Config:
     SCREEN_SIZE = (400, 400) # 画布大小
     N_TILES = 10  # 网格行数
     FPS = 10    # FPS
-    ANT_START_POS = (5, 5)  # 蚂蚁起始位置
-    INIT_TILES = None # 初始网格布置
+    ANT_INIT_POS = (5, 5)  # 蚂蚁起始位置
+    ANT_INIT_DIRECTION = 0
+    INIT_TILES = 'random' # 初始网格布置
     SHOW_GRID = True # 是否显示网格线
 
     # do not recommend edit this params

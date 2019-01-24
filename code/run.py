@@ -1,3 +1,4 @@
+# TODO: 加入命令解析
 import sys
 import pygame
 from tile import Tile
@@ -36,5 +37,8 @@ def run(tile):
 
 
 if __name__ == "__main__":
-    t = Tile(screen, cfg.ANT_START_POS, init_tiles=cfg.INIT_TILES, show_grid=cfg.SHOW_GRID)
+    t = Tile(screen, cfg.ANT_INIT_POS,
+             ant_init_direction=cfg.ANT_INIT_DIRECTION,
+             init_tiles=cfg.INIT_TILES,
+             show_grid=cfg.SHOW_GRID)
     run(t)
